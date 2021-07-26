@@ -39,3 +39,10 @@ print(fruit.items())
 f_tuple = tuple(fruit.items())
 
 print()
+
+for snack in f_tuple:
+    item, descripition  = snack
+    print(item,'-',descripition)
+
+print()
+print(dict(f_tuple))
