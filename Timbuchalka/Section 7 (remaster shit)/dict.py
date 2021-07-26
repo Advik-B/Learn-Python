@@ -7,9 +7,21 @@ fruit = {
     "Lime":"DO NOT MISTAKE THIS FOR A LEMON LIME IS DIFFERENT!!!"
     }
 
-
 print(fruit)
+
+for f in sorted((fruit.keys())):
+    print(f + " - " + fruit[f])
+
 print("\n"*5)
-print(*fruit)
-print("\n"*5)
-print(fruit["Orange"])
+
+# for val in fruit.values():
+#     print(val)
+
+# print('-'*80)
+
+# for key in fruit:
+#     print(fruit[key])
+
+print(fruit.keys())
+
+print(fruit.values())
