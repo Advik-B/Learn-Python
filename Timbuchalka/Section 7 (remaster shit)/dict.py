@@ -22,6 +22,20 @@ print("\n"*5)
 # for key in fruit:
 #     print(fruit[key])
 
-print(fruit.keys())
+# print(fruit.keys())
 
-print(fruit.values())
+# print(fruit.values())
+
+# fruit_keys = fruit.keys()
+# print(fruit_keys)
+
+# fruit["tomato"] = "Not nice with ice cream. is good with pizza"
+
+# print(fruit_keys)
+
+print(fruit)
+print()
+print(fruit.items())
+f_tuple = tuple(fruit.items())
+
+print()
