@@ -1,10 +1,14 @@
 myList = [
+    
     "a",
     "b",
     "c",
     "d"
 ]
 
+def space():
+    print()
+    
 newString = ''
 
 for c in myList:
@@ -12,10 +16,11 @@ for c in myList:
 
 # print(type(newString))
 print(newString)
-print()
+space()
 print("There is a better way to do this")
-print()
+space()
 newString = ", ".join(myList)
 
 # print(type(newString))
 print(newString)
+exit("\n")
