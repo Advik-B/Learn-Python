@@ -1,8 +1,5 @@
 from tkinter import *
 
-
-
-
 root = Tk()
 root.title('My app')
 #root.iconbitmap('C:/s/download.ico')
