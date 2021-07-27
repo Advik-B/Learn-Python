@@ -1,5 +1,7 @@
+.tmp.drivedownload/
+
+dist/
+
 *.driveupload
 
 *.drivedownload
-
-*.tmp.drivedownload
