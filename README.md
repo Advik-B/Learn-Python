@@ -39,7 +39,8 @@
 - *See some code examples*
 - *Sell your altered code**
   
-*YOU NEED TO GIVE ME SOME CREDIT!!
+*Only if you can give me some credit
+
 
 **What you cannot do with the repo**
  
