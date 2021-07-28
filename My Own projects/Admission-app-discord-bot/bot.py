@@ -16,7 +16,7 @@ def get_quote():
 
 @client.event 
 async def on_ready():
-    print(f'We have logged in as {client.user}')
+    print(f'Logged in as {client.user}')
 
 @client.event #epic
 async def on_message(message):
@@ -54,20 +54,30 @@ async def on_message(message):
             await message.channel.send(f'{quote}\n{"-"*(len(quote))}')
         else:
             pass
-try:
-    if os.path.isfile('./.env'):
 
-        Token = open ('.env' , 'r').read()
-        try:
-            client.run(Token)
-        except:
-            print("INVALID TOKEN")
+
+if os.path.isfile('./.env'):
+
+    Token = open ('.env' , 'r').read()
+    if Token != "":
+        if "-" in Token: 
+            try:
+                client.run(Token)
+                print()
+                print("The bot has started!")
+                print()
+            except:
+                print("Could not start the bot!🤒")
+        else:
+            print("ERROR:\
+    Invalid token found in the .env file")
     else:
-        Token = open('.env','w+').read()
+        print("No bot token was found in the .env file! please paste in the correct bot token in the .env file")
+else:
+    Token = open('.env','w+').read()
+    print("TOKEN NOT FOUND PLEASE PASTE THE BOT TOKEN IN THE .env FILE")
+    del Token
     # keep_alive()
 
 
-
-except FileNotFoundError:
-    print("FATAL ERROR: .env file is not found please create a .env file and paste the bot token inside it")
 # client.run(os.getenv('TOKEN'))
