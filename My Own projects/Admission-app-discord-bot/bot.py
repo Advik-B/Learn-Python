@@ -54,7 +54,20 @@ async def on_message(message):
             await message.channel.send(f'{quote}\n{"-"*(len(quote))}')
         else:
             pass
+try:
+    if os.path.isfile('./.env'):
 
-# keep_alive()
-client.run('ODY5ODY1MDEzNzMxNTQ5MjM0.YQEa7A.9--vohyeD9O904onyKV7Px_DbGA')
+        Token = open ('.env' , 'r').read()
+        try:
+            client.run(Token)
+        except:
+            print("INVALID TOKEN")
+    else:
+        Token = open('.env','w+').read()
+    # keep_alive()
+
+
+
+except FileNotFoundError:
+    print("FATAL ERROR: .env file is not found please create a .env file and paste the bot token inside it")
 # client.run(os.getenv('TOKEN'))
