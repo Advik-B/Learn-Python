@@ -7,12 +7,22 @@ from keep_alive import keep_alive
 
 client = discord.Client()
 
-def get_quote():
+line_break = "> || ||"
 
-    response = requests.get("https://zenquotes.io/api/random")
-    json_data = json.loads(response.text)
-    quote = json_data[0]['q'] + " -" + json_data[0]['a']
-    return(quote)
+def get_quote():
+    while True:
+        try:
+
+            response = requests.get("https://zenquotes.io/api/random")
+        except requests.ConnectionError:
+            return "Sorry but we are unable to load the quotes"
+
+        if response != '[{"q":"Too many requests. Obtain an auth key for unlimited access.","a":"zenquotes.io","h":"Too many requests. Obtain an auth key for unlimited access @ zenquotes.io"}]':
+            json_data = json.loads(response.text)
+            quote = json_data[0]['q'] + " -" + json_data[0]['a']
+            return(quote)
+        else:
+            continue #looping until you get a proper responce
 
 @client.event 
 async def on_ready():
@@ -32,15 +42,21 @@ async def on_message(message):
 
     if msg.startswith('$quote'):
         quote = get_quote()
+        outquote = True
         if msg != '$quote':
             try:
 
                 number = int(msg.split('$quote ',1)[1])
                 for i in range(number-1):
-                    await message.channel.send(f'{quote} \n{"-"*(len(quote))}')
                     quote = get_quote()
-                    if i == 5:
-                        time.sleep(5.555)
+                    if quote != 'Sorry but we are unable to load the quotes':
+
+                        await message.channel.send(f'{quote} \n{line_break}')
+                        time.sleep(4)
+                    else:
+                        await message.channel.send('Sorry but my quotes are not able to load please try again in 30 seconds')
+                        break
+                    
                 del i
 
             except:
@@ -51,9 +67,9 @@ async def on_message(message):
                 outquote = False
         
         if outquote != False:
-            await message.channel.send(f'{quote}\n{"-"*(len(quote))}')
+            await message.channel.send(f'{quote}\n')
         else:
-            pass
+            outquote = True
 
 
 if os.path.isfile('./.env'):
