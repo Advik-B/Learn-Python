@@ -1,34 +1,58 @@
-import time
-import discord
 import os
-import requests
-import json
-from keep_alive import keep_alive
+try:
+    import time
+    import discord
+    from keep_alive import keep_alive
+    from discord.ext import commands
+    from discord_slash import SlashCommand, SlashContext
+    from discord_slash.utils.manage_commands import create_choice,create_option
 
-client = discord.Client()
+except ModuleNotFoundError:
+    os.system('python -m pip install -r requirements.txt')
 
-line_break = "> || ||"
+def Welcome_Message(usr_id,bot_id):
+    message_welcome = (f'Hello <@{usr_id}>!\n'
+                       f'Thank you for using <@{bot_id}> made by <@765739254164357121>\n'
+                       f'You will will have to answer the following questions in order to get enroled.\n'
+                       f'So please answer the following questions promtly.')
+    
+    return message_welcome
 
-def get_quote():
-    while True:
-        try:
+client = commands.Bot(command_prefix='ah!')
+slash = SlashCommand(client,sync_commands=True)
 
-            response = requests.get("https://zenquotes.io/api/random")
-        except requests.ConnectionError:
-            return "Sorry but we are unable to load the quotes"
 
-        if response != '[{"q":"Too many requests. Obtain an auth key for unlimited access.","a":"zenquotes.io","h":"Too many requests. Obtain an auth key for unlimited access @ zenquotes.io"}]':
-            json_data = json.loads(response.text)
-            quote = json_data[0]['q'] + " -" + json_data[0]['a']
-            return(quote)
-        else:
-            continue #looping until you get a proper responce
+@slash.slash(name="Create",
+             description="Will create an admission for you",
+             
+             options=[
+               create_option(
+    
+                 name="email",
+                 description="Please enter your email. We won`t spam you.",
+                 option_type=3,
+                 required=True,
+                 )
+             ])
+
+async def test(ctx,email:str):
+
+    global user_name
+    user_name = (str(ctx.author)).replace(f'#{str(ctx.author.id)}' , '')
+    user_id = (str(ctx.author.id))
+    
+    bot_id = (int(client.user.id))
+
+    await ctx.send(content=f"<@{user_id}> check your dms for the application form")
+    
+    await ctx.author.send(Welcome_Message(usr_id=user_id,bot_id=bot_id))
 
 @client.event 
 async def on_ready():
     print(f'Logged in as {client.user}')
+    print()
+    print('The bot is now online!')
 
-@client.event #epic
 async def on_message(message):
     if message.author == client.user:
         return
@@ -39,61 +63,46 @@ async def on_message(message):
     if msg:
         print(f'{message.author}: {msg} ({message.channel})')
 
-
-    if msg.startswith('$quote'):
-        quote = get_quote()
-        outquote = True
-        if msg != '$quote':
-            try:
-
-                number = int(msg.split('$quote ',1)[1])
-                for i in range(number-1):
-                    quote = get_quote()
-                    if quote != 'Sorry but we are unable to load the quotes':
-
-                        await message.channel.send(f'{quote} \n{line_break}')
-                        time.sleep(4)
-                    else:
-                        await message.channel.send('Sorry but my quotes are not able to load please try again in 30 seconds')
-                        break
-                    
-                del i
-
-            except:
-                error_cause = str(msg.split('$quote ',1)[1])
-
-                await message.channel.send(f'**INVALID COMMAND:**\n\
-    ***`$quote {error_cause}`*** is not a valid command since ***`{error_cause}`*** is not a number')
-                outquote = False
-        
-        if outquote != False:
-            await message.channel.send(f'{quote}\n')
-        else:
-            outquote = True
-
-
+# keep_alive()
 if os.path.isfile('./.env'):
+    try:
 
-    Token = open ('.env' , 'r').read()
-    if Token != "":
-        if "-" in Token: 
+        token = os.getenv("TOKEN")
+    except:
+        with open('.env','w+') as environment_var:
+            environment_var.write("TOKEN=")
+        print("Error: Bot token not found!\n\
+   please paste the bot token in the .env file next to 'TOKEN='")
+
+        print("\n"*2)
+        input('Press enter to quit')
+        exit()
+
+    if token != '':
+        if '-' in token:
             try:
-                client.run(Token)
-                print()
-                print("The bot has started!")
-                print()
+                client.run(token)
             except:
-                print("Could not start the bot!🤒")
+                print("Invalid Token please regenerete the token and try again")
+                print("*"*2)
+                input("Press enter to quit")
+                exit()
         else:
-            print("ERROR:\
-    Invalid token found in the .env file")
+            print("Invalid Token please regenerete the token and try again")
+            print("*"*2)
+            input("Press enter to quit")
+            exit()
     else:
-        print("No bot token was found in the .env file! please paste in the correct bot token in the .env file")
+        print("Error: Bot token not found!\n\
+       please paste the bot token in the .env file next to 'TOKEN='")
+        print("\n"*2)
+        input('Press enter to quit')
+
 else:
-    Token = open('.env','w+').read()
-    print("TOKEN NOT FOUND PLEASE PASTE THE BOT TOKEN IN THE .env FILE")
-    del Token
-    # keep_alive()
-
-
-# client.run(os.getenv('TOKEN'))
+    with open('.env','w+') as environment_var:
+        environment_var.write("TOKEN=")
+    print("Error: Bot token not found!\n\
+       please paste the bot token in the .env file next to 'TOKEN='")
+    print("\n"*2)
+    input('Press enter to quit')
+    exit()
