@@ -67,7 +67,7 @@ async def on_message(message):
 if os.path.isfile('./.env'):
     try:
 
-        token = os.getenv("TOKEN")
+        token = str(os.getenv("TOKEN"))
     except:
         with open('.env','w+') as environment_var:
             environment_var.write("TOKEN=")
@@ -79,19 +79,14 @@ if os.path.isfile('./.env'):
         exit()
 
     if token != '':
-        if '-' in token:
-            try:
+        
+            
                 client.run(token)
-            except:
-                print("Invalid Token please regenerete the token and try again")
-                print("*"*2)
-                input("Press enter to quit")
-                exit()
-        else:
-            print("Invalid Token please regenerete the token and try again")
-            print("*"*2)
-            input("Press enter to quit")
-            exit()
+            
+                # print("Invalid Token please regenerete the token and try again")
+                # print("\n"*2)
+                # input("Press enter to quit")
+                # exit()
     else:
         print("Error: Bot token not found!\n\
        please paste the bot token in the .env file next to 'TOKEN='")
