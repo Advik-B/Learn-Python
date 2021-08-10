@@ -2,10 +2,20 @@ from tkinter import *
 from tkinter import ttk
 
 root = Tk()
+
+def callback():
+    print('Your name :'+entry.get())
+    print('Your password :'+entry2.get())
+    if chvar.get() == 1:
+        print('"Remember me" is selected')
+    else:
+        print('not selected')
+
 entry = ttk.Entry(root , width=30)
 entry2 = ttk.Entry(root , width=30)
 entry.insert(0 , 'Please enter your name')
 entry2.insert(0 , 'Please enter your password')
+# entry2.config(show = 's')
 
 button = ttk.Button(root , text='Enter')
 lbltitle = ttk.Label(root , text='Our title here' , font='Consolas 22')
@@ -23,6 +33,7 @@ chvar = IntVar()
 chvar.set(0)
 cbox = Checkbutton(root , text='Remember me!', variable=chvar  , font = 'Arial 16')
 cbox.grid(row  = 4 , column = 0 ,sticky=E ,columnspan=2)
+button.config(command = callback)
 
 root.geometry('500x400')
 root.mainloop()
