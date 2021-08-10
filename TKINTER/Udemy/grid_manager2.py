@@ -19,5 +19,10 @@ entry.grid(row = 1 , column = 1)
 entry2.grid( row = 2 , column = 1)
 button.grid(row = 3 , column = 1, sticky=E+W , pady=5)
 
+chvar = IntVar()
+chvar.set(0)
+cbox = Checkbutton(root , text='Remember me!', variable=chvar  , font = 'Arial 16')
+cbox.grid(row  = 4 , column = 0 ,sticky=E ,columnspan=2)
+
 root.geometry('500x400')
 root.mainloop()
