@@ -7,12 +7,14 @@ def callback():
     val1 = entry.get()
     val2 = entry2.get()
 
-    print('your name is :',val1)
-    print('your password is :',val2)
+    print('your name is :'+val1)
+    print('your password is :'+val2)
 
 entry = ttk.Entry(root, width=30)
 entry.insert(0 , ' Please enter your name')
 entry.state(['disabled'])
+entry.state(['!disabled'])
+entry.state(['readonly'])
 entry.pack()
 
 
