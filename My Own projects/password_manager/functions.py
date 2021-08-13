@@ -1,6 +1,3 @@
-from typing import AnyStr
-
-
 def pinput(prompt_text:str = '',prompt:str = '>>> ') -> any:
     """
     This function is basically\n
