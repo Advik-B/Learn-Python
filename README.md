@@ -13,7 +13,7 @@
 
 *I love minecraft **( Java edition )***
 
-*My minecraft username is ```Advik__```*
+*My minecraft username is* ```Advik__```
 
 **~~THE CAKE IS A LIE~~**
 
