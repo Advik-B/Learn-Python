@@ -63,3 +63,4 @@ for things in shopping_list.items():
 
 colorama.deinit()
 input()
+exit(0)
