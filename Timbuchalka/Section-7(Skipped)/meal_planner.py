@@ -1,7 +1,7 @@
 from contents import pantry , recipes
 import time
-import colorama
-colorama.init()
+# import colorama
+# colorama.init()
 RED = '\u001b[31m'
 GREEN = '\u001b[32m'
 RESET = '\u001b[0m'
@@ -61,6 +61,6 @@ for things in shopping_list.items():
     print('\t',*things , sep=' - ')
     print(RESET)
 
-colorama.deinit()
+# colorama.deinit()
 input()
-exit(0)
+exit(f'{GREEN}Exit code 0{RESET}')
