@@ -15,7 +15,7 @@ class P:
 
 unzip = P()
 
-a = "C:\Users\advik.ADVIK-PC\Downloads"
+a = "C:/Users/advik.ADVIK-PC/Downloads"
 
 b = "C:\S"
 
