@@ -26,8 +26,6 @@
 
 *[Github profile](https://github.com/Advik-B)*
 
-*[Repository](https://github.com/Advik-B/Learn-Python)*
-
 *[My Discord Bot](https://bit.ly/3BlqkeU)*- *Type `$quote` to get started on the bot*
 
 ---
