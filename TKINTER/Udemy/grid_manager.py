@@ -8,7 +8,7 @@ entry.insert(0 , 'Please enter your name')
 entry2.insert(0 , 'Please enter your password')
 
 button = ttk.Button(root , text='Enter')
-lbltitle = ttk.Label(root , text='Our title here' , font='Consolas 22')
+lbltitle = ttk.Label(root , text='Our title here' , font='Helvatica 22')
 lblname = ttk.Label(root , text='Your name :')
 lblpassword = ttk.Label(root , text='Your password :')
 
