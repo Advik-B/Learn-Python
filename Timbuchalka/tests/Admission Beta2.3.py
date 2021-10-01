@@ -1,8 +1,6 @@
 p = print
 P = p
-import dropbox
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
+
 
 upload_file_list = []
 
@@ -68,9 +66,6 @@ except:
 
 
 folder_path = f'Admissions'
-
-gauth = GoogleAuth()           
-drive = GoogleDrive(gauth)  
 
 my_email = 'admission.helper.app@gmail.com'
 
