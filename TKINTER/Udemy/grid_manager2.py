@@ -4,8 +4,8 @@ from tkinter import ttk
 root = Tk()
 
 def callback():
-    print('Your name :'+entry.get())
-    print('Your password :'+entry2.get())
+    print('Your name : '+entry.get())
+    print('Your password : '+entry2.get())
     if chvar.get() == 1:
         print('"Remember me" is selected')
     else:
