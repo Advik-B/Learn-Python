@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import ttk
-
 root = Tk()
 
 def callback():
@@ -10,6 +9,8 @@ def callback():
         print('"Remember me" is selected')
     else:
         print('not selected')
+
+    print('Months' , months.get())
 
 entry = ttk.Entry(root , width=30)
 entry2 = ttk.Entry(root , width=30)
@@ -35,5 +36,12 @@ cbox = Checkbutton(root , text='Remember me!', variable=chvar  , font = 'Arial 1
 cbox.grid(row  = 4 , column = 0 ,sticky=E ,columnspan=2)
 button.config(command = callback)
 
-root.geometry('500x400')
+months = StringVar()
+numbers = []
+for i in range(0 , 999):
+    numbers.append(i)
+combobox = ttk.Combobox(root , textvariable=months , values=numbers , state='readonly').grid(row = 6 , column=0)
+year = StringVar()
+Spinbox(root , from_=1990 , to=2018  , textvariable=year , state='readonly').grid(row=6 , column=1)
+root.geometry('500x450')
 root.mainloop()
