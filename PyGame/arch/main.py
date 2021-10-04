@@ -3,15 +3,15 @@ import pygame
 pygame.init() # Initalise pygame
 
 # Create the screen
-screen = pygame.display.set_mode((800 , 600))
+screen = pygame.display.set_mode((1000 , 800))
 
 # Title and screen
-pygame.display.set_caption('Space Invaders (FreePlay)')
-icon = pygame.image.load('assets/spaceship512.png')
-pygame.display.set_icon(icon)
+pygame.display.set_caption('Demo')
+# icon = pygame.image.load(r'assets\heros\6.png')
+# pygame.display.set_icon(icon)
 
 # Player
-playerImg = pygame.image.load('assets/player64.png')
+playerImg = pygame.image.load(r'assets\images\target icon icon.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
@@ -43,11 +43,19 @@ while running:
 
             if event.key == pygame.K_DOWN:
                 playerY_change = .25
+
+            if event.key == pygame.K_ESCAPE:
+                running = False
+    
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT :
+            if event.key == pygame.K_LEFT:
+                playerX_change = 0
+            if event.key == pygame.K_RIGHT:
                 playerX_change = 0
 
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN :
+            if event.key == pygame.K_UP:
+                playerY_change = 0
+            if event.key == pygame.K_DOWN :
                 playerY_change = 0
 
 
