@@ -1,6 +1,0 @@
-the_code  = (199)
-print(type(the_code))
-the_code = ("lll")
-print (type(the_code))
-print ("Helo World")
-   print("hi" * 8)

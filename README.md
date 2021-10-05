@@ -1,7 +1,8 @@
 # *Learn Python Programming*
----
-### Hello! welcome to my github repo.
 
+---
+
+### Hello! welcome to my github repo
 
 **About me:**
 
@@ -18,6 +19,7 @@
 **~~THE CAKE IS A LIE~~**
 
 ---
+
 ### ***links***
 
 *[Discord](https://discord.gg/DsMYhmZ6Qq)*
@@ -39,10 +41,9 @@
   
 *Only if you can give me some credit
 
-
 **What you cannot do with the repo**
- 
- - *Use it for commercial use and not giving credit to me*
- - *Altering me code and publishing it without giving the the credit **( VERY BAD )***
+
+- *Use it for commercial use and not giving credit to me*
+- *Altering me code and publishing it without giving the the credit **( VERY BAD )***
 
 ## Happy Learning 😃
