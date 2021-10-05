@@ -1,5 +1,0 @@
-https://azure.microsoft.com/en-in/
-https://azure.microsoft.com/en-in/free/
-https://azure.microsoft.com/en-in/features/azure-portal/
-https://azure.microsoft.com/en-in/account/
-https://azure.microsoft.com/en-in/global-infrastructure/geographies/

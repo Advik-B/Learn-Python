@@ -1,5 +1,0 @@
-openpyxl
-xlrd
-pydrive
-discord
-discord-py-slash-command
