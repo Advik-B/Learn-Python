@@ -4,7 +4,7 @@ from tkinter import ttk
 
 root = Tk()
 
-sample_list = os.listdir('E:/')
+sample_list = os.listdir('/')
 
 lBox = Listbox(root , width=40 , height=15 , selectmode=SINGLE)
 i = 0
