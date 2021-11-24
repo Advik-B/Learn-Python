@@ -5,34 +5,27 @@ class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Using labels")
-        self.setGeometry(50,50,350,350)
+        self.setGeometry(50, 50, 350, 350)
         self.UI()
+        
 
     def UI(self):
-        self.text=QLabel('My Text',self)
-        enterButton = QPushButton('Enter',self)
-        exitButton = QPushButton('Exit',self)
-        self.text.move(160,50)
-        enterButton.move(100,80)
-        exitButton.move(200,80)
-        enterButton.clicked.connect(self.enterFunc)
-        exitButton.clicked.connect(self.exitFunc)
+        self.text1 = QLabel("My text", self)
+        self.enter_btn = QPushButton("Enter", self)
+        self.exit_btn = QPushButton("Exit", self)
+        self.text1.move(160, 50)
+        self.enter_btn.move(100, 80)
+        self.exit_btn.move(200, 80)
+        self.enter_btn.clicked.connect(self.enter_func)
+        self.exit_btn.clicked.connect(self.exit_func)
         self.show()
-
-
-    def enterFunc(self):
-        self.text.setText('You clicked enter')
-        self.text.resize(150,20)
-    
-
-    def exitFunc(self):
-        self.text.setText('You clicked exit')
-        self.text.resize(150,20)
         
-
-
+    def enter_func(self):
+        self.text1.setText("enter")
         
-
+    def exit_func(self):
+        self.text1.setText("exit")
+        
 def main():
     App = QApplication(sys.argv)
     window = Window()
