@@ -1,16 +1,15 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit
 
 class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Using LineEdit")
-        self.setGeometry(50, 50, 350, 350)
+        self.setGeometry(650, 150, 550, 550)
         self.UI()
-        
+  
 
     def UI(self):
-    
         self.nameTextBox = QLineEdit(self)
         self.nameTextBox.setPlaceholderText("Enter your name")
         self.nameTextBox.move(120, 50)
