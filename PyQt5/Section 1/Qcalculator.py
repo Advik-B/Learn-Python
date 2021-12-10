@@ -6,7 +6,7 @@ from random import choice
 class QUseless_Calculator(QWidget):
 
     def __init__(self, parent=None):
-        
+
         if parent:
             super().__init__(parent)
         else:
@@ -236,9 +236,7 @@ class QUseless_Calculator(QWidget):
     def change(self, val):
         self.key_press(val)
         numbers = [1, 2, 3, 4, 5, 6, 7, 8, 0, 9] # Just to trigger people who have OCD 😏
-        for i in range(len(numbers)):
-            if i == 10:
-                i = 0
+        for i in range(len(numbers) - 1):
             self.btn = getattr(self, 'btn' + str(i))
             vl = str(choice(numbers))
             self.btn.setText(vl)

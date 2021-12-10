@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget # Import the QApplication and QWidget classes
+from PyQt5.QtWidgets import QApplication, QWidget, QSpinBox
 from sys import argv, exit as sys_exit
 
 class Window(QWidget):
@@ -11,9 +11,11 @@ class Window(QWidget):
             int(self.width() * .9),
             int(self.height() * .5),
             800,
-            600
+            600,
             )
         self.setWindowTitle('PyQt5')
+        self.spinbox = QSpinBox(self)
+        self.spinbox.move(150, 150)
         self.show()
 
 def main():
