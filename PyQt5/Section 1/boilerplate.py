@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QTextBrowser
+from PyQt5.QtWidgets import QApplication, QWidget
 from sys import argv, exit as sys_exit
 
 class Window(QWidget):
@@ -14,7 +14,6 @@ class Window(QWidget):
             600
             )
         self.setWindowTitle('PyQt5')
-        self.t = QTextBrowser(self)
         self.show()
 
 def main():
