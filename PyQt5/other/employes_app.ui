@@ -23,24 +23,18 @@
       <height>671</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="main_ui">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QPushButton" name="profile_pic_btn">
+          <widget class="QPushButton" name="profile_pic">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>200</height>
-            </size>
            </property>
            <property name="text">
             <string/>
@@ -94,7 +88,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox"/>
+          <widget class="QSpinBox" name="age"/>
          </item>
         </layout>
        </item>
@@ -119,7 +113,7 @@
             <bool>false</bool>
            </property>
            <property name="currentText">
-            <string>Male</string>
+            <string/>
            </property>
            <property name="placeholderText">
             <string>Gender Here</string>
@@ -131,7 +125,7 @@
            </item>
            <item>
             <property name="text">
-             <string>Famale</string>
+             <string>Female</string>
             </property>
            </item>
            <item>
@@ -163,7 +157,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="phone1">
            <property name="inputMethodHints">
             <set>Qt::ImhDigitsOnly|Qt::ImhNoTextHandles</set>
            </property>
@@ -181,7 +175,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="email_tbox">
+          <widget class="QLineEdit" name="email">
            <property name="inputMethodHints">
             <set>Qt::ImhEmailCharactersOnly</set>
            </property>
@@ -220,7 +214,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit">
+          <widget class="QPlainTextEdit" name="notes">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
              <horstretch>0</horstretch>
@@ -236,7 +230,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QListView" name="name_lbl"/>
+        <widget class="QListWidget" name="items"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">

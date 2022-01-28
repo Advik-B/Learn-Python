@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Default",
+        "avatar": "assets/default.png",
+        "gender": "other",
+        "age": 2340,
+        "phone": [
+            "+0",
+            "0000000000"
+        ],
+        "email": "someone@example.com",
+        "address": "The Internet",
+        "notes": ""
+    },
+    {
+        "name": "Caroline",
+        "avatar": "assets/avatar (4).png",
+        "gender": "female",
+        "surname": "GLaDOS",
+        "age": 22,
+        "phone": [
+            "+0",
+            "0000000000"
+        ],
+        "email": "someone@example.com",
+        "address": "The Internet",
+        "notes": ""
+    },    {
+        "name": "Default2",
+        "avatar": "assets/default.png",
+        "gender": "other",
+        "age": 2340,
+        "phone": [
+            "+0",
+            "0000000000"
+        ],
+        "email": "someone@example.com",
+        "address": "The Internet",
+        "notes": ""
+    },    {
+        "name": "Default3",
+        "avatar": "assets/default.png",
+        "gender": "other",
+        "age": 240,
+        "phone": [
+            "+0",
+            "0000000000"
+        ],
+        "email": "someone@example.com",
+        "address": "The Internet",
+        "notes": ""
+    },    {
+        "name": "Default4",
+        "avatar": "assets/default.png",
+        "gender": "other",
+        "age": 30,
+        "phone": [
+            "+0",
+            "0000000000"
+        ],
+        "email": "someone@example.com",
+        "address": "The Internet",
+        "notes": ""
+    }
+]
