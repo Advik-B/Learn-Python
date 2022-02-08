@@ -1,0 +1,5 @@
+portalocker
+alive-process
+numpy
+termcolor
+send2trash
