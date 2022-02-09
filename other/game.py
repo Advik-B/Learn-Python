@@ -35,7 +35,7 @@ class Player:
         self.width = 40
         self.height = 40
         
-        self.speed_x = .5
+        self.speed_x = 1
         self.speed_y = 2.5
         
         self.ismoving_left = True
@@ -61,12 +61,13 @@ class Player:
         if self.can_jump and self.jump_key_pressed:
             self.y -= self.speed_y
             self.max_jump_height -= self.speed_y
+            self.isjumping = True
         
         if self.max_jump_height <= 0:
             self.can_jump = False
             self.jump_key_pressed = False
             self.max_jump_height = 600
-
+            self.isjumping = False
         
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
@@ -144,7 +145,7 @@ class MainGame:
         if self.player.isgrounded is False:
             self.player.y += self.gravity
         # Check if the player is on the ground and if so, reset the y position
-        if self.player.y >= (self.gound.y * 1.2 - self.gound.tile_height) - self.player.height:
+        if self.player.y >= (self.gound.y * 1.2 - self.gound.tile_height) - self.player.height and not self.player.isjumping:
             self.player.y = (self.gound.y * 1.2 - self.gound.tile_height) - self.player.height
             self.player.isgrounded = True
             self.gravity = 1
