@@ -18,14 +18,13 @@ class Ground:
         self.height = self.tile_height
         self.image = pygame.image.load("assets/grass_block.png")
         self.surface = pygame.Surface((self.width, self.height))
-        # Tile the image
-    def update(self):
+        # Tile the image across the surface
         for x in range(0, self.width, self.image.get_width()):
             self.surface.blit(self.image, (x, 0))
             
     def draw(self, screen):
         # self.image.fill((0, 120, 0))
-        self.update()
+
         screen.blit(self.surface, (self.x, self.y))
 
 class Player:
@@ -37,14 +36,17 @@ class Player:
         self.height = 40
         
         self.speed_x = .5
-        self.speed_y = 0
+        self.speed_y = 2.5
         
         self.ismoving_left = True
         self.ismoving_right = True
     
         self.isjumping = False
-        self.isgrounded = True
+        self.isgrounded = False
         self.image = pygame.image.load("assets/player64.png")
+        self.can_jump = False
+        self.jump_key_pressed = False
+        self.max_jump_height = 600
 
     def update_pos(self):
         if self.ismoving_left:
@@ -52,9 +54,19 @@ class Player:
         
         if self.ismoving_right:
             self.x -= self.speed_x
+        
+        self.jump()
 
+    def jump(self):
+        if self.can_jump and self.jump_key_pressed:
+            self.y -= self.speed_y
+            self.max_jump_height -= self.speed_y
+        
+        if self.max_jump_height <= 0:
+            self.can_jump = False
+            self.jump_key_pressed = False
+            self.max_jump_height = 600
 
-        # print(self.x)
         
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
@@ -92,6 +104,9 @@ class MainGame:
                 self.player.ismoving_left = True
             if key == pygame.K_RIGHT:
                 self.player.ismoving_right = True
+            
+            if key == pygame.K_UP:
+                self.player.jump_key_pressed = False
 
         def KEY_DOWN(key):
             if key == pygame.K_ESCAPE:
@@ -102,7 +117,10 @@ class MainGame:
             
             if key == pygame.K_LEFT:
                 self.player.ismoving_left = False
-        
+                
+            if key == pygame.K_UP:
+                self.player.jump_key_pressed = True
+       
         if event.type == pygame.KEYUP:
             KEY_UP(key)
         elif event.type == pygame.KEYDOWN:
@@ -114,23 +132,29 @@ class MainGame:
         self.screen.fill((0, 0, 0))
         self.event_loop()
         self.gound.draw(self.screen)
-        self.player.isgrounded = self.is_on_ground()
         self.gravity_update()
         self.player.update_pos()
         self.player.draw(self.screen)
         self.gound.width = SCREEN_WIDTH - self.gound.x   
+        print(self.player.jump_key_pressed)
         pygame.display.update()
     
     def gravity_update(self):
-        print(self.player.isgrounded)
+        # print(self.player.isgrounded)
         if self.player.isgrounded is False:
             self.player.y += self.gravity
-        
         # Check if the player is on the ground and if so, reset the y position
         if self.player.y >= (self.gound.y * 1.2 - self.gound.tile_height) - self.player.height:
             self.player.y = (self.gound.y * 1.2 - self.gound.tile_height) - self.player.height
             self.player.isgrounded = True
+            self.gravity = 1
         
+        if self.player.isgrounded:
+            self.player.can_jump = True
+        
+        # Check if the player is on the ground and if not set player.isgrounded to False
+        if not self.is_collision(self.player.x, self.player.y, 0, self.gravity):
+            self.player.isgrounded = False
 
     def run(self):
         while self.running:
