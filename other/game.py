@@ -1,11 +1,12 @@
 import pygame
 import sys
+import time
 # --- Constants
 SCREEN_TITLE = "Platformer"
 
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 650
-
+GROUND_MINUS = 20
 
 
 class Ground:
@@ -77,13 +78,14 @@ class MainGame:
     def __init__(self) -> None:
         """Initialize the game."""
         
-        pygame.init()
-        self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.RESIZABLE)
+        self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
         self.running = True
         pygame.display.set_caption(SCREEN_TITLE)
         self.gound = Ground()
         self.player = Player()
         self.gravity = 1
+        self.background = pygame.image.load("assets/background.png")
+        self.background = pygame.transform.scale(self.background, (SCREEN_WIDTH, SCREEN_HEIGHT))
     
     def event_loop(self):
         for event in pygame.event.get():
@@ -131,6 +133,7 @@ class MainGame:
         global SCREEN_WIDTH
         SCREEN_WIDTH = self.screen.get_width()
         self.screen.fill((0, 0, 0))
+        self.screen.blit(self.background, (0, 0))
         self.event_loop()
         self.gound.draw(self.screen)
         self.gravity_update()
@@ -157,6 +160,11 @@ class MainGame:
         if not self.is_collision(self.player.x, self.player.y, 0, self.gravity):
             self.player.isgrounded = False
 
+        # Prevent player from glitching thru the ground
+        # Time wasted = 8 hours (Temp chunkey fix)
+        if self.player.y >= (self.gound.y - GROUND_MINUS) - self.player.height:
+            self.player.y -= self.gravity
+
     def run(self):
         while self.running:
             self.update()
@@ -168,8 +176,7 @@ class MainGame:
             x + x_change > self.gound.x
             and x + x_change < self.gound.x + self.gound.width
             and y + y_change > self.gound.y
-            and y + y_change < self.gound.y + self.gound.height
-        )
+            and y + y_change < self.gound.y + self.gound.height)
     
     def is_on_ground(self):
         return self.is_collision(self.player.x, self.player.y, 0, 1)
@@ -179,6 +186,8 @@ class MainGame:
         sys.exit(0)
 
 def main():
+    pygame.init()
+    pygame.display.init()
     game = MainGame()
     game.run()
 
