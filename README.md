@@ -9,8 +9,6 @@
 
 *I am a python dev (still learning and exploring)*
 
-*I don`t like nosy idiots who send useless pull requests( **I MEAN IT!!** )*
-
 *I love minecraft **( Java edition )***
 
 *My minecraft username is* ```Advik__```
@@ -21,8 +19,6 @@
 ### ***links***
 
 *[Discord](https://discord.gg/DsMYhmZ6Qq)*
-
-*[Youtube](https://www.youtube.com/channel/UCbZacC3BV7ryDzQxVKL5U8w?sub_confirmation=1)*
 
 *[Github profile](https://github.com/Advik-B)*
 
